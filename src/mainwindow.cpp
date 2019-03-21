@@ -1,5 +1,6 @@
 #include <QMessageBox>
 #include <QtConcurrent>
+#include <QCoreApplication>
 
 #include "mainwindow.h"
 #include "threadmanager.h"
@@ -45,7 +46,7 @@ MainWindow::MainWindow(QWidget *parent) :
                 threadManager,
                 SIGNAL(incrementPercentComputed(double)),
                 this,
-                SLOT(incrementProgressBar(double)));
+                SLOT(incrementProgressBar(double)), Qt::QueuedConnection);
 
     /*
      * On prépare une expression régulière pour valider le hash
@@ -137,8 +138,12 @@ void MainWindow::prepareHacking()
  */
 void MainWindow::incrementProgressBar(double percent)
 {
+
     progress += percent;
-    ui->progressBar->setValue(100*progress);
+    qInfo() << "progress: " << progress << endl;
+    ui->progressBar->setValue(int(100*progress));
+    ui->progressBar->update();
+    QCoreApplication::processEvents();
 }
 /*
  * La fonction ci-dessous est exécutée à la réception réception d'un signal

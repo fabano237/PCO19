@@ -14,6 +14,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QSemaphore>
 
 /**
  * \brief The ThreadManager class
@@ -24,6 +25,10 @@ class ThreadManager: public QObject
 {
     Q_OBJECT
 private:
+    QString passwordFoundStr = "";
+    unsigned int nbThreads;
+    bool passwordFound = false;
+    static QSemaphore* passwordUpdate;
 
 public:
     /**
@@ -57,6 +62,15 @@ signals:
      * reverser le hash md5
      */
     void incrementPercentComputed(double percentComputed);
+
+    void passwordIsFound(bool passwordFound);
+public slots:
+    /**
+     * \brief passwordComputed fonction qui indique au threadManager
+     *  que le mot de passe a été trouvé.
+     */
+    void passwordComputed(QString password);
+    void incrementPercentComputedSlot(double percentComputed);
 };
 
 #endif // THREADMANAGER_H
