@@ -138,12 +138,9 @@ void MainWindow::prepareHacking()
  */
 void MainWindow::incrementProgressBar(double percent)
 {
-
     progress += percent;
-    qInfo() << "progress: " << progress << endl;
     ui->progressBar->setValue(int(100*progress));
     ui->progressBar->update();
-    QCoreApplication::processEvents();
 }
 /*
  * La fonction ci-dessous est exécutée à la réception réception d'un signal

@@ -20,6 +20,7 @@ MyThread::~MyThread() {
 }
 
 void MyThread::run() {
+
     unsigned long long int nbComputed = 0;
     unsigned int i;
     /*

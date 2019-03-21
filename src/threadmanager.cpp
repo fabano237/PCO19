@@ -1,7 +1,6 @@
 #include <QCryptographicHash>
 #include <QVector>
 #include <QCoreApplication>
-#include <QDebug>
 
 #include "mythread.h"
 #include "threadmanager.h"
