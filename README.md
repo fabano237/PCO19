@@ -1,7 +1,7 @@
 
-# Titre du laboratoire
+# Labo 06 - Serveur partie 2: ThreadPool
 
-Auteurs: Jane Doe, John Doe
+Auteurs: Fabrice Mbassi, Aurélien Siu
 
 ## Description des fonctionnalités du logiciel
 
